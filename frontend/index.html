@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DevOps To-Do App</title>
+  <style>
+    body { font-family: sans-serif; max-width: 500px; margin: 40px auto; }
+    li { display: flex; justify-content: space-between; margin: 8px 0; }
+    input { padding: 8px; width: 70%; }
+    button { padding: 8px 12px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>DevOps To-Do App</h2>
+  <input id="title" placeholder="Naya kaam likho..." />
+  <button onclick="addTodo()">Add</button>
+  <ul id="list"></ul>
+
+  <script>
+    async function load() {
+      const res = await fetch('/api/todos');
+      const todos = await res.json();
+      document.getElementById('list').innerHTML = todos
+        .map(t => `<li>${t.title}
+          <button onclick="del(${t.id})">Delete</button></li>`)
+        .join('');
+    }
+    async function addTodo() {
+      const input = document.getElementById('title');
+      if (!input.value) return;
+      await fetch('/api/todos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: input.value })
+      });
+      input.value = '';
+      load();
+    }
+    async function del(id) {
+      await fetch('/api/todos/' + id, { method: 'DELETE' });
+      load();
+    }
+    load();
+  </script>
+</body>
+</html>
