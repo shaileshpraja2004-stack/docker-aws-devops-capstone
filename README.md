@@ -62,3 +62,14 @@ Never run `docker compose down -v` unless you want to delete the database data.
 ## Screenshots
 
 See the `screenshots/` folder.
+
+## Screenshot
+![Adding the list in field box](Added-the-list.png)
+![docker compose ps](compose-ps.png)
+![All github files with Readme.MD](github-files.png)
+![check the logs](logs.png)
+![run the application on server](run-the-application.png)
+![save the data after roboot server](reboot-server.png)
+![check rules of security group](security-group.png)
+
+
