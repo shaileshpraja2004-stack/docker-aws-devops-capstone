@@ -68,7 +68,7 @@ See the `screenshots/` folder.
 ![docker compose ps](compose-ps.png)
 ![All github files with Readme.MD](github-files.png)
 ![check the logs](logs.png)
-![run the application on server](run-the-application.png)
+![run the application on server](run-application.png)
 ![save the data after roboot server](reboot-server.png)
 ![check rules of security group](security-group.png)
 
